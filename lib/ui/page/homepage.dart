@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import './page.dart';
 import '../../model/model.dart';
+import '../widget/widget.dart';
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Pokedex'),
-        ),
+        appBar: createAppBar(),
         body: PokeList(pokemon: fetchPost(),)
         );
   }

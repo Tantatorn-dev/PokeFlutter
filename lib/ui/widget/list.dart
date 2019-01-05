@@ -17,12 +17,12 @@ class PokeList extends StatelessWidget{
           return ListView.builder(
             itemCount: snapshot.data.count,
             itemBuilder: (context,index){
-              return ListTile(title:Text(snapshot.data.results[index].name));
+              return ListTile(title:Text(snapshot.data.results[index].name),
+              onTap: (){},);
             },
           );
           }
       ,
     );
   }
-  
 }
