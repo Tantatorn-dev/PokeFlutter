@@ -6,8 +6,13 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: createAppBar(),
-        body: PokeList(pokemon: fetchPost(),)
-        );
+        appBar: AppBar(
+          leading: Pokeball(),
+          title: Text('Pokedex'),
+          backgroundColor: Colors.redAccent[700],
+        ),
+        body: PokeList(
+          pokemon: fetchPokemonList(),
+        ));
   }
 }
