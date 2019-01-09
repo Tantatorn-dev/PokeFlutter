@@ -21,7 +21,7 @@ class PokeList extends StatelessWidget {
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(
-                      builder: (context) => PokemonPage(pokemon: fetchPokemonData(index),)));
+                      builder: (context) => PokemonPage(pokemon: fetchPokemonData(index+1),)));
               },
             );
           },

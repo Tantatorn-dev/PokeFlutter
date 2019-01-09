@@ -65,10 +65,40 @@ class Pokemon {
   final String name;
   final int weight;
   final int height;
+  final PokemonImage image;
+  final List<PokemonType> types;
+  
 
-  Pokemon({this.id, this.name, this.weight, this.height});
+  Pokemon({this.id, this.name, this.weight, this.height,this.image,this.types});
 
   factory Pokemon.fromJson(Map<String, dynamic> parsedJson) {
-    return Pokemon(name: parsedJson['name']);
+    PokemonImage pokeImage=PokemonImage.fromJson(parsedJson['sprites']);
+
+    var list=parsedJson['types'] as List;
+    List<PokemonType>  typeList= list.map((i) => PokemonType.fromJson(i)).toList();
+
+    return Pokemon(name: parsedJson['name'],image: pokeImage,weight: parsedJson['weight'],height: parsedJson['height'],types: typeList);
+  }
+}
+
+class PokemonImage{
+  final String url;
+
+  PokemonImage({this.url});
+  
+  factory PokemonImage.fromJson(Map<String,dynamic> parsedJson){
+    return PokemonImage(url: parsedJson['front_default']);
+  }
+}
+
+class PokemonType{
+  final String name;
+  
+
+  PokemonType({this.name});
+
+  factory PokemonType.fromJson(Map<String,dynamic> parsedJson){
+    var type =parsedJson['type'];
+    return PokemonType(name: type['name']);
   }
 }
