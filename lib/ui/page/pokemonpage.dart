@@ -111,10 +111,14 @@ class PokemonTypeText extends StatelessWidget {
 
   PokemonTypeText({Key key, this.pokemonTypes}) : super(key: key);
 
-  List<Widget> createPokemonTypesText() {
+  List<Widget> createPokemonTypesText(BuildContext context) {
     List<Widget> lists = [];
     for (int i = 0; i < pokemonTypes.length; i++) {
-      lists.add(Container(padding: EdgeInsets.only(left: 5.0),child:Text(pokemonTypes[i].name)));
+      lists.add(Container(
+        margin: EdgeInsets.only(left:15.0),
+        child: Text(pokemonTypes[i].name),
+        decoration: BoxDecoration(shape: BoxShape.rectangle,color:TypeTextColor.mixColor(context, pokemonTypes[i].name),),
+      ));
     }
     return lists;
   }
@@ -122,12 +126,59 @@ class PokemonTypeText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.only(left: 25.0,top: 10.0),
+        padding: EdgeInsets.only(left: 25.0, top: 10.0),
         child: Row(
-      children: <Widget>[
-            Text('Types',),
-          ] +
-          createPokemonTypesText(),
-    ));
+          children: <Widget>[
+                Text(
+                  'Types',
+                ),
+              ] +
+              createPokemonTypesText(context),
+        ));
+  }
+}
+
+class TypeTextColor {
+  static Color mixColor(BuildContext context, String type) {
+    switch (type) {
+      case 'normal':
+        return Color(0xffa8a878);
+      case 'fire':
+        return Color(0xfff08030);
+      case 'fighting':
+        return Color(0xffc03028);
+      case 'water':
+        return Color(0xff6890f0);
+      case 'flying':
+        return Color(0xffa890f0);
+      case 'grass':
+        return Color(0xff78c850);
+      case 'poison':
+        return Color(0xffa040a0);
+      case 'electric':
+        return Color(0xfff8d030);
+      case 'ground':
+        return Color(0xffe0c068);
+      case 'psychic':
+        return Color(0xfff85888);
+      case 'rock':
+        return Color(0xffb8a038);
+      case 'ice':
+        return Color(0xff98d8d8);
+      case 'bug':
+        return Color(0xffa8b820);
+      case 'dragon':
+        return Color(0xff7038f8);
+      case 'ghost':
+        return Color(0xff705898);
+      case 'dark':
+        return Color(0xff705848);
+      case 'steel':
+        return Color(0xffb8b8d0);
+      case 'fairy':
+        return Color(0xffee99ac);
+      default:
+        return null;
+    }
   }
 }
