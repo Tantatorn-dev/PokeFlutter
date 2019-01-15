@@ -11,8 +11,13 @@ class Home extends StatelessWidget {
           title: Text('Pokedex'),
           backgroundColor: Colors.redAccent[700],
         ),
-        body: PokeList(
-          pokemon: fetchPokemonList(),
+        body: Column(
+          children: <Widget>[
+            Expanded(
+                child: PokeList(
+              pokemon: fetchPokemonList(),
+            ))
+          ],
         ));
   }
 }

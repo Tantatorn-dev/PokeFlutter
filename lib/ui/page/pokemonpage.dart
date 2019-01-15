@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../model/model.dart';
+import '../widget/widget.dart';
 
 class PokemonPage extends StatelessWidget {
   final Future<Pokemon> pokemon;
@@ -11,7 +12,19 @@ class PokemonPage extends StatelessWidget {
     return FutureBuilder(
         future: pokemon,
         builder: (context, snapshot) {
-          return Scaffold(
+          
+          if(!snapshot.hasData){
+            return Scaffold(appBar: AppBar(
+              backgroundColor: Colors.redAccent[700],
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                )),
+                body: Loading(),);
+          }
+          else{return Scaffold(
             appBar: AppBar(
               leading: IconButton(
                 icon: Icon(Icons.arrow_back),
@@ -34,7 +47,7 @@ class PokemonPage extends StatelessWidget {
                 PokemonTypeText(pokemonTypes: snapshot.data.types)
               ],
             ),
-          );
+          );}
         });
   }
 }

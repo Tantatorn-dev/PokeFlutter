@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import '../page/page.dart';
 import '../../model/model.dart';
+import '../widget/widget.dart';
 
 class PokeList extends StatelessWidget {
+
   final Future<ResultList> pokemon;
 
   PokeList({Key key, this.pokemon}) : super(key: key);
@@ -12,20 +14,26 @@ class PokeList extends StatelessWidget {
     return FutureBuilder(
       future: pokemon,
       builder: (context, snapshot) {
-        return ListView.builder(
+        if(!snapshot.hasData){
+          return Loading();
+        }
+        else{return ListView.builder(
           itemCount: snapshot.data.count,
           itemBuilder: (context, index) {
             return ListTile(
               title:
                   Text('  ${index + 1}  ' + snapshot.data.results[index].name),
               onTap: () {
-                Navigator.push(context,
+                Navigator.push(
+                    context,
                     MaterialPageRoute(
-                      builder: (context) => PokemonPage(pokemon: fetchPokemonData(index+1),)));
+                        builder: (context) => PokemonPage(
+                              pokemon: fetchPokemonData(index + 1),
+                            )));
               },
             );
           },
-        );
+        );}
       },
     );
   }
