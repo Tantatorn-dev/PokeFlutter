@@ -6,6 +6,10 @@ Pokeflutter is a Pokedex created by Flutter and used the data from PokeAPI
   - See that pokemon info.
   - Cool.
 
+### Screenshots
+    ![screenshot 1](https://raw.githubusercontent.com/Timefear007/PokeFlutter/master/screenshots/Screenshot_1.jpg)
+
+    ![screenshot 2](https://raw.githubusercontent.com/Timefear007/PokeFlutter/master/screenshots/Screenshot_2.jpg)
 
 ### Development
 
